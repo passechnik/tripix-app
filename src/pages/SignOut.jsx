@@ -1,11 +1,12 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 const SignOut = () => {
   return (
-    <div>
-      <h1>Home Page</h1>
-      {/* Add content for the Home page */}
-    </div>
+    <>
+    <h1>Sign Out</h1>
+    <Outlet />
+    </>
   );
 };
 

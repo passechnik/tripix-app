@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  width: 200px;
+}
+
+.sidebar a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.discover {
+  color: red;
+}/*# sourceMappingURL=main.css.map */
