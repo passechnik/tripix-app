@@ -8,6 +8,10 @@ body {
   height: 100vh;
 }
 
+.main-content {
+  flex-grow: 1;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -30,4 +34,28 @@ body {
 
 .discover {
   color: red;
+}
+
+/* Sidebar.scss */
+.sidebar {
+  width: 200px; /* Set your initial width */
+  height: 100vh;
+  background-color: #333;
+  color: white;
+  transition: width 0.3s ease; /* Add a transition for a smooth effect */
+}
+
+.sidebar.open {
+  width: 60px; /* Adjust this to your smaller width */
+}
+
+.toggle-button img {
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.toggle-icon {
+  font-size: 30px;
 }/*# sourceMappingURL=main.css.map */
