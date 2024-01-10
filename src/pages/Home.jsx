@@ -1,7 +1,6 @@
-// Home.jsx
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import Trip from '../components/Trip'; // Import the Trip component
+import Trip from '../components/Trip'; 
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -15,33 +14,33 @@ const Home = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    // You can reset the form values here if needed
+ 
     setTripName('');
     setTripDate('');
   };
 
   const handleAddTrip = () => {
-    // Create a new trip object
+    // create a new trip object
     const newTrip = {
       name: tripName,
       date: tripDate,
     };
 
-    // Update the trips state with the new trip
+    // update the trips state with the new trip
     setTrips((prevTrips) => [...prevTrips, newTrip]);
 
-    // Close the modal after adding the trip
+    // close the modal after adding the trip
     handleCloseModal();
   };
 
   const handleDeleteTrip = (index) => {
-    // Create a copy of the current trips array
+    // create a copy of the current trips array
     const updatedTrips = [...trips];
 
-    // Remove the trip at the specified index
+    // remove the trip at the specified index
     updatedTrips.splice(index, 1);
 
-    // Update the trips state with the modified array
+    // update the trips state with the modified array
     setTrips(updatedTrips);
   };
 
@@ -67,7 +66,7 @@ const Home = () => {
         Add Trip
       </button>
 
-      {/* Modal for adding a new trip */}
+      {/* modal for adding a new trip */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
           <Modal.Title>Add Trip</Modal.Title>
@@ -86,7 +85,7 @@ const Home = () => {
 
             <Form.Group controlId="tripDate">
               <Form.Label>Choose the trip date</Form.Label>
-              {/* You can replace this with a Bootstrap date picker component */}
+              
               <Form.Control
                 type="date"
                 value={tripDate}

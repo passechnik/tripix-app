@@ -9,16 +9,28 @@ body {
 }
 
 .main-content {
+  padding: 2em;
   flex-grow: 1;
 }
 
+.discover {
+  color: red;
+}
+
+/* Sidebar.scss */
 .sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: #333;
+  color: white;
+  transition: width 0.3s ease;
   display: flex;
   flex-direction: column;
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  width: 200px;
+  padding: 2em;
+}
+
+.sidebar.open {
+  width: 60px;
 }
 
 .sidebar a {
@@ -30,23 +42,6 @@ body {
 
 .sidebar a:hover {
   text-decoration: underline;
-}
-
-.discover {
-  color: red;
-}
-
-/* Sidebar.scss */
-.sidebar {
-  width: 200px; /* Set your initial width */
-  height: 100vh;
-  background-color: #333;
-  color: white;
-  transition: width 0.3s ease; /* Add a transition for a smooth effect */
-}
-
-.sidebar.open {
-  width: 60px; /* Adjust this to your smaller width */
 }
 
 .toggle-button img {
@@ -61,10 +56,21 @@ body {
 }
 
 .btn {
-  width: 9em;
-  height: 5em;
+  width: 7em;
+  height: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(154, 231, 235);
 }
 
-.btn-discover {
-  color: red;
+.btn-small {
+  width: 5em;
+  height: 3em;
+}
+
+.btn-danger {
+  background-color: rgb(243, 73, 73);
+  border-color: rgb(243, 73, 73);
+  display: flex;
 }/*# sourceMappingURL=main.css.map */
