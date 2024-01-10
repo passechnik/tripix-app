@@ -58,4 +58,13 @@ body {
 
 .toggle-icon {
   font-size: 30px;
+}
+
+.btn {
+  width: 9em;
+  height: 5em;
+}
+
+.btn-discover {
+  color: red;
 }/*# sourceMappingURL=main.css.map */
