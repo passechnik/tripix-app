@@ -1,40 +1,41 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-  }
-  
-  .app-container {
+}
+
+.app-container {
     display: flex;
     height: 100vh;
-  }
+}
 
-  .main-content {
+.main-content {
     padding: 2em;
     flex-grow: 1;
-  }
-  
-  .discover {
-    color: red;
-  }
+}
 
-  /* Sidebar.scss */
+.discover {
+    color: red;
+}
+
+/* Sidebar.scss */
 .sidebar {
-    width: 200px;
+    width: 80px;
     height: 100vh;
-    background-color: #333;
+    background-color: #482929;
     color: white;
-    transition: width 0.3s ease;
+    transition: all 0.5s ease;
     display: flex;
     flex-direction: column;
-    padding: 2em;
-  }
-  
-  .sidebar.open {
-    width: 60px;
-  }
+    padding: 1em;
+}
 
-  .sidebar a {
-    display: block;
+.sidebar.open {
+    width: 200px;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
     color: #fff;
     text-decoration: none;
     margin-bottom: 10px;
@@ -44,36 +45,37 @@ body {
     text-decoration: underline;
   }
   
-  
-  .toggle-button img {
+  .sidebar a > * {
+    margin-right: 1em;
+  }
+
+.toggle-button img {
     cursor: pointer;
     padding: 10px;
     text-align: center;
     color: white;
-  }
+}
 
-  .toggle-icon {
+.toggle-icon {
     font-size: 30px;
-  }
+}
 
-  .btn {
+.btn {
     width: 7em;
     height: 3em;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(154, 231, 235);
-  }
+}
 
-  .btn-small {
+.btn-small {
     width: 5em;
     height: 3em;
-  }
+}
 
-  .btn-danger {
+.btn-danger {
     background-color: rgb(243, 73, 73);
-    border-color:rgb(243, 73, 73) ;
+    border-color: rgb(243, 73, 73);
     display: flex;
-  }
-
-  
+}

@@ -1,23 +1,39 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IoMenu } from "react-icons/io5";
+import { IoMenu, IoHome, IoPlanet, IoPerson } from 'react-icons/io5';
+import { CiSettings } from "react-icons/ci";
 
 const Sidebar = () => {
-    const [isSidebarOpen, setSidebarOpen] = useState(true);
+    const [isSidebarOpen, setSidebarOpen] = useState(false);
 
     const toggleSidebar = () => {
         setSidebarOpen(!isSidebarOpen);
     };
 
+    let iconStyles = { color: 'red', fontSize: '1.5em'}
+
     return (
         <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
             <div className="toggle-button" onClick={toggleSidebar}>
-            <IoMenu className='toggle-icon'/>
+                <IoMenu className='toggle-icon' />
             </div>
-            <Link to='/'>Home</Link>
-            <Link to='/discover'>Discover Places</Link>
-            <Link to='/settings'>Settings</Link>
-            <Link to='/signout'>Sign Out</Link>
+
+            {isSidebarOpen ? (
+                <>
+                    <Link to='/'><IoHome style={iconStyles}/> Home</Link>
+                    <Link to='/discover'><IoPlanet style={iconStyles} /> Discover</Link>
+                    <Link to='/settings'><CiSettings style={iconStyles}/> Settings</Link>
+                    <Link to='/signout'><IoPerson style={iconStyles}/> Sign Out</Link>
+                </>
+            ) : (
+                <>
+                    <Link to='/'><IoHome /></Link>
+                    <Link to='/discover'><IoPlanet /></Link>
+                    <Link to='/settings'><CiSettings /></Link>
+                    <Link to='/signout'><IoPerson /></Link>
+
+                </>
+            )}
         </div>
     );
 };

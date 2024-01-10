@@ -19,22 +19,23 @@ body {
 
 /* Sidebar.scss */
 .sidebar {
-  width: 200px;
+  width: 80px;
   height: 100vh;
-  background-color: #333;
+  background-color: #482929;
   color: white;
-  transition: width 0.3s ease;
+  transition: all 0.5s ease;
   display: flex;
   flex-direction: column;
-  padding: 2em;
+  padding: 1em;
 }
 
 .sidebar.open {
-  width: 60px;
+  width: 200px;
 }
 
 .sidebar a {
-  display: block;
+  display: flex;
+  align-items: center;
   color: #fff;
   text-decoration: none;
   margin-bottom: 10px;
@@ -42,6 +43,10 @@ body {
 
 .sidebar a:hover {
   text-decoration: underline;
+}
+
+.sidebar a > * {
+  margin-right: 1em;
 }
 
 .toggle-button img {
