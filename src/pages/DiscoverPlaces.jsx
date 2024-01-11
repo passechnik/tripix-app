@@ -11,4 +11,4 @@ const DiscoverPlaces = () => {
   );
 };
 
-export { DiscoverPlaces };
+export default DiscoverPlaces;

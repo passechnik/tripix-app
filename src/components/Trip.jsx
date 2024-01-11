@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import Card from 'react-bootstrap/Card';
 
-const Trip = ({ trip, onDelete }) => {
+const Trip = ({ trip, onDelete, setTrips }) => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(trip.date));
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Trip = ({ trip, onDelete }) => {
     }
 
     const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const hours = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60 * 60));
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
@@ -39,6 +39,13 @@ const Trip = ({ trip, onDelete }) => {
       seconds,
     };
   }
+
+  const handleDelete = () => {
+    onDelete(); // Call onDelete function passed from Home component
+
+    // Now you can also call setTrips to update the trips array
+    setTrips((prevTrips) => prevTrips.filter((t) => t.id !== trip.id));
+  };
 
   return (
     <Card style={{ width: '18rem' }} className="mb-3">
@@ -52,7 +59,7 @@ const Trip = ({ trip, onDelete }) => {
           {timeLeft.seconds > 0 && `${timeLeft.seconds}s `}
           {timeLeft.days <= 0 && timeLeft.hours <= 0 && timeLeft.minutes <= 0 && timeLeft.seconds <= 0 && 'Your trip is now!'}
         </Card.Text>
-        <button className="btn btn-danger" onClick={onDelete}>
+        <button className="btn btn-danger" onClick={handleDelete}>
           <FaTrash />
         </button>
       </Card.Body>
