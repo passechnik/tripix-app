@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Trip from '../components/Trip';
 
 const Home = ({ trips, addTrip, setTrips }) => {
   const [showModal, setShowModal] = useState(false);
   const [tripName, setTripName] = useState('');
   const [tripDate, setTripDate] = useState('');
+  const navigate = useNavigate(); // Get the navigate function
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -22,17 +24,21 @@ const Home = ({ trips, addTrip, setTrips }) => {
     const newTrip = {
       name: tripName,
       date: tripDate,
-      details: 'Additional details for the trip', // You can customize this
+      details: 'Additional details for the trip',
+      id: Date.now(),
     };
 
     addTrip(newTrip);
     handleCloseModal();
   };
 
-  const handleDeleteTrip = (index) => {
-    const updatedTrips = [...trips];
-    updatedTrips.splice(index, 1);
-    setTrips(updatedTrips);
+  const handleDeleteTrip = (id) => {
+    setTrips((prevTrips) => {
+      const updatedTrips = prevTrips.filter((trip) => trip.id !== id);
+      // Navigate to the home page after deleting the trip
+      navigate('/');
+      return updatedTrips;
+    });
   };
 
   return (
@@ -40,22 +46,18 @@ const Home = ({ trips, addTrip, setTrips }) => {
       <h1>Home Page</h1>
       <h2>My Trips</h2>
       {trips.length === 0 ? (
-  <h4>You have no trips.</h4>
-) : (
-  <ul>
-    {trips.map((trip, index) => (
-  <li key={index}>
-    <Link to={`/trip/${index}`}>
-      <Trip key={index} trip={trip} onDelete={() => handleDeleteTrip(index)} setTrips={setTrips} />
-    </Link>
-  </li>
-))}
-
-  </ul>
-)}
-
-
-
+        <h4>You have no trips.</h4>
+      ) : (
+        <ul>
+          {trips.map((trip, index) => (
+            <li key={index}>
+              <Link to={`/trip/${trip.id}`}>
+                <Trip key={index} trip={trip} onDelete={() => handleDeleteTrip(trip.id)} setTrips={setTrips} />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
 
       <button className="btn btn-home" onClick={handleShowModal}>
         Add Trip

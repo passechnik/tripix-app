@@ -7,7 +7,7 @@ const TripPage = ({ trips }) => {
   const tripId = parseInt(id, 10);
 
   // Find the trip with the specified id
-  const trip = trips.find((t, index) => index === tripId);
+  const trip = trips.find((t) => t.id === tripId);
 
   // If no trip is found, display "No trip found"
   if (!trip) {

@@ -41,11 +41,13 @@ const Trip = ({ trip, onDelete, setTrips }) => {
   }
 
   const handleDelete = () => {
-    onDelete(); // Call onDelete function passed from Home component
-
-    // Now you can also call setTrips to update the trips array
+    // First, call setTrips to update the trips array
     setTrips((prevTrips) => prevTrips.filter((t) => t.id !== trip.id));
+  
+    // Then, call onDelete function passed from Home component if needed
+    onDelete();
   };
+  
 
   return (
     <Card style={{ width: '18rem' }} className="mb-3">

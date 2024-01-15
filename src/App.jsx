@@ -16,9 +16,10 @@ export default function App() {
 
   // Function to add a new trip
   const addTrip = (newTrip) => {
-    setTrips([...trips, newTrip]);
+    const updatedTrips = [...trips, { ...newTrip, id: Date.now() }];
+    setTrips(updatedTrips);
   };
-
+  
   return (
     <>
       <Router>
