@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import Trip from '../components/Trip';
 
 const Home = ({ trips, addTrip, setTrips }) => {
   const [showModal, setShowModal] = useState(false);
   const [tripName, setTripName] = useState('');
   const [tripDate, setTripDate] = useState('');
-  const navigate = useNavigate(); // Get the navigate function
+  const navigate = useNavigate();
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -32,10 +32,15 @@ const Home = ({ trips, addTrip, setTrips }) => {
     handleCloseModal();
   };
 
+  useEffect(() => {
+    // use useEffect to navigate after the component has rendered
+    navigate('/');
+  }, [navigate]); // dependency array ensures this effect runs only once after the initial render
+
   const handleDeleteTrip = (id) => {
     setTrips((prevTrips) => {
       const updatedTrips = prevTrips.filter((trip) => trip.id !== id);
-      // Navigate to the home page after deleting the trip
+      // navigate to the home page after deleting the trip
       navigate('/');
       return updatedTrips;
     });
@@ -45,19 +50,20 @@ const Home = ({ trips, addTrip, setTrips }) => {
     <div>
       <h1>Home Page</h1>
       <h2>My Trips</h2>
-      {trips.length === 0 ? (
-        <h4>You have no trips.</h4>
-      ) : (
-        <ul>
-          {trips.map((trip, index) => (
-            <li key={index}>
-              <Link to={`/trip/${trip.id}`}>
-                <Trip key={index} trip={trip} onDelete={() => handleDeleteTrip(trip.id)} setTrips={setTrips} />
+      <div className="trip-grid">
+        {trips.length === 0 ? (
+          <h4>You have no trips.</h4>
+        ) : (
+          trips.map((trip, index) => (
+            <div key={index} className="trip-card">
+              <Link to={`/trip/${index}`}>
+                <Trip key={index} trip={trip} onDelete={() => handleDeleteTrip(index)} setTrips={setTrips} />
               </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+            </div>
+          ))
+        )}
+      </div>
+
 
       <button className="btn btn-home" onClick={handleShowModal}>
         Add Trip

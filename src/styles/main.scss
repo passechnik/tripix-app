@@ -79,3 +79,15 @@ body {
     border-color: rgb(243, 73, 73);
     display: flex;
 }
+
+
+.trip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .trip-card {
+    width: 100%;
+    height: 100%;
+  }

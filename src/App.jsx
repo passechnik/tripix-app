@@ -1,7 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
@@ -11,14 +11,27 @@ import SignOut from './pages/SignOut';
 import TripPage from './pages/TripPage';
 
 export default function App() {
-  // Use state to manage the trips
+  // // Use state to manage the trips
+  // const [trips, setTrips] = useState([]);
+
+  // // Function to add a new trip
+  // const addTrip = (newTrip) => {
+  //   const updatedTrips = [...trips, { ...newTrip, id: Date.now() }];
+  //   setTrips(updatedTrips);
+  // };
+
   const [trips, setTrips] = useState([]);
 
   // Function to add a new trip
   const addTrip = (newTrip) => {
-    const updatedTrips = [...trips, { ...newTrip, id: Date.now() }];
-    setTrips(updatedTrips);
+    // Adding a trip does not require useEffect
+    setTrips((prevTrips) => [...prevTrips, { ...newTrip, id: Date.now() }]);
   };
+
+  // Use useEffect for any side effects related to trips
+  useEffect(() => {
+    // For now, this effect does nothing. You can add more side effects here if needed.
+  }, [trips]);
   
   return (
     <>
